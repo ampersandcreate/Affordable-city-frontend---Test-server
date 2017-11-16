@@ -1,0 +1,1 @@
+export { ForgotPasswordModule } from '/forgotpassword.module';

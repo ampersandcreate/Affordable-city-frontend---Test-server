@@ -1,0 +1,86 @@
+<nav class="navbar navbar-inverse">
+    <div class="">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#"></a>
+        </div>
+        <ul class="nav navbar-nav navbar-center">
+            <li *ngIf="!state.isAuthenticated;">
+                <a routerLink="about">
+                    About
+                </a>
+            </li>
+
+            <li *ngIf="!state.isAuthenticated;">
+                <a routerLink="press">
+                    Press
+                </a>
+            </li>
+
+            <li *ngIf="!state.isAuthenticated;">
+                <a routerLink="pricing">
+                    Pricing
+                </a>
+            </li>
+            <li *ngIf="!state.isAuthenticated;">
+                <a routerLink="apartment-list-view">
+                    Apartments
+                </a>
+            </li>
+
+        </ul>
+        <ul *ngIf="state.isAuthenticated; else anonymousUser" class="nav navbar-nav navbar-right">
+            <li>
+                <a routerLink="dashboard/landlord"> {{fullName}}</a></li>
+            <li>
+                <a routerLink="sign-in" (click)="signOut($event)">
+                    <i class="fa fa-sign-in" aria-hidden="true"></i> Sign Out
+                </a>
+            </li>
+        </ul>
+        <ng-template #anonymousUser>
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <!-- <a routerLink="sign-up">
+                        <i class="fa fa-user-circle-o"aria-hidden="true">
+                        </i> Sign Up</a> -->
+                    <a href="#" data-toggle="modal" data-target="#signUpModel1">
+                    <i class="fa fa-user-circle-o" aria-hidden="true"></i> Sign Up
+                    </a>
+                </li>
+                <li>
+                      <a href="#" data-toggle="modal" data-target="#signInModel1">
+                        <i  class="fa fa-sign-in" aria-hidden="true"></i> Sign In
+                    </a>
+                </li>
+            </ul>
+        </ng-template>
+    </div>
+</nav>
+
+
+
+  <div id="signInModel1" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+            <div class="modal-content" style="background-color:transparent;border:none;">
+                <div class="modal-body">
+                        <app-signin></app-signin>
+                    <br>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="signUpModel1" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+                      <div  class="modal-content signup-popup">
+                          <div class="modal-body">
+                                  <app-signup></app-signup>
+                                  <div class="row" style="margin-left: 30%;margin-top: -4%;position: relative;">
+                                        <h2 style="color:dimgray;" >Don't have an account </h2>&nbsp;&nbsp;
+                                        <h2><a data-dismiss="modal"  href="#" data-toggle="modal" data-target="#signInModel1" style="color:dimgray;text-decoration:underline;"> sign in </a></h2>
+                                    </div>
+                              <br>
+                          </div>
+                      </div>
+                  </div>
+              </div>
